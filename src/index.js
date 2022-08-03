@@ -9,15 +9,18 @@ module.exports = function toReadable (n) {
     part;
 
 if (num === 0) return 'zero';
-if (hundreds) word.push(numbers[hundreds] + ' hundred');
-
+if (hundreds){
+    word.push(numbers[hundreds] + ' hundred');
+    word.join('').trim();
+}
 if (tens === 0) {
     word.push(numbers[ones]);
+    
 } else if (tens === 1) {
   word.push(numbers['1' + ones] || (numbers['t' + ones] || numbers[ones]) + 'teen');
 } else {
   part = numbers[tens + '0'] || (numbers['t' + tens] || numbers[tens]) + 'ty';
     word.push(numbers[ones] ? part + ' ' + numbers[ones] : part);
 }
-return word.join(' ');
+return word.join(' ').trim();
 }
